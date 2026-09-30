@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About the Wattwise data visualisation prototype, its source, and design decisions.">
+  <title>About us | Appliance Energy Consumption Website</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Wattwise, Home"><img
+          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Wattwise</strong><small>Appliance
+            energy atlas</small></span></a>
+      <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a
+          href="televisions.html">Televisions</a><a href="about.html" aria-current="page">About us</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-hero shell about-hero">
+      <div>
+        <p class="kicker">ABOUT / THE PROJECT</p>
+        <h1>Useful stories start with <em>honest data.</em></h1>
+        <p>Wattwise is a small learning prototype for COS30045 Data Visualisation. It brings a real TV registration
+          snapshot into a clear, interactive website while we develop a broader question about Australian energy use.
+        </p>
+      </div>
+      <div class="about-mark" aria-hidden="true"><span>W<span>⚡</span></span></div>
+    </section>
+    <section class="section section-light">
+      <div class="shell about-grid">
+        <div>
+          <p class="kicker">01 / PURPOSE</p>
+          <h2>Built to ask better questions.</h2>
+        </div>
+        <div class="about-prose">
+          <p>This first version lets visitors ask whether TV screen size is related to labelled annual energy
+            consumption, and how the picture changes by technology or brand. It is an exploratory tool, not a
+            recommendation engine.</p>
+          <p>When a stronger Assignment 1 dataset and angle are selected, the data and story can be updated without
+            rebuilding the basic site structure.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section method-section">
+      <div class="shell">
+        <p class="kicker">02 / THE METHOD</p>
+        <h2>What went into this view.</h2>
+        <div class="method-grid">
+          <article><span>01</span>
+            <h3>Source</h3>
+            <p>A temporary television registration CSV named <code>tv_2026_02_15.csv</code>, captured on 15 February
+              2026.</p>
+          </article>
+          <article><span>02</span>
+            <h3>Selection</h3>
+            <p>The chart uses records marked “Available,” sold in Australia, with plausible numeric screen size and
+              annual kWh values. Screen size is converted from centimetres to inches.</p>
+          </article>
+          <article><span>03</span>
+            <h3>Encoding</h3>
+            <p>Position on a shared scale shows screen size and annual kWh. Filters support comparisons without
+              distorting the axes.</p>
+          </article>
+          <article><span>04</span>
+            <h3>Limits</h3>
+            <p>Registration status is not live store availability. Labelled yearly energy is a standardised value;
+              actual household use and electricity cost vary.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-light">
+      <div class="shell about-grid">
+        <div>
+          <p class="kicker">03 / RESPONSIBLE USE</p>
+          <h2>Make the workings visible.</h2>
+        </div>
+        <div class="about-prose">
+          <p>For the class exercise, this website uses three HTML pages, one shared CSS file, and vanilla JavaScript for
+            the FAQ, calculator, and data view. No external JavaScript library is required.</p>
+          <p>OpenAI Codex assisted with planning, visual design, implementation, and debugging. The README documents
+            that assistance so the work can be reviewed and explained during the exercise demonstration.</p><a
+            class="text-link" href="televisions.html">Explore the data <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><strong>Wattwise</strong>
+        <p>A COS30045 learning prototype by Chanh Nghi.</p>
+      </div>
+      <div><span>© 2026 Chanh Nghi</span><span>GenAI assistance: OpenAI Codex for design and code.</span></div>
+    </div>
+  </footer>
+</body>
+
+</html>
