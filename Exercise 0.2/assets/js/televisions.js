@@ -1,4 +1,4 @@
-// Explore the temporary TV registration snapshot using plain SVG and DOM APIs.
+// Explore labelled energy from the October TV model snapshot using plain SVG.
 
 const snapshot = window.TV_SNAPSHOT;
 const statusMessage = document.getElementById('load-message');
@@ -69,7 +69,7 @@ function drawChart(models) {
     dots.append(dot);
   });
   chart.append(dots);
-  document.getElementById('chart-note').textContent = `${whole.format(models.length)} records plotted. Both axes retain the same scale as filters change (10–120 inches; 0–3,000 kWh/year). Hover a dot for its model details.`;
+  document.getElementById('chart-note').textContent = `${whole.format(models.length)} model rows plotted. Both axes retain the same scale as filters change (10–120 inches; 0–3,000 kWh/year). Hover a dot for its model details.`;
 }
 
 function updateTable(models) {

@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="About the Wattwise data visualisation prototype, its source, and design decisions.">
-  <title>About us | Appliance Energy Consumption Website</title>
+  <meta name="description" content="About the Still On data visualisation prototype, its source, and design decisions.">
+  <title>About us | Still On</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/site.js" defer></script>
 </head>
@@ -13,8 +13,8 @@
 <body data-page="about">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Wattwise, Home"><img
-          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Wattwise</strong><small>Appliance
+    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Still On, Home"><img
+          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Still On</strong><small>Appliance
             energy atlas</small></span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a
           href="televisions.html">Televisions</a><a href="about.html" aria-current="page">About us</a></nav>
@@ -25,8 +25,8 @@
       <div>
         <p class="kicker">ABOUT / THE PROJECT</p>
         <h1>Useful stories start with <em>honest data.</em></h1>
-        <p>Wattwise is a small learning prototype for COS30045 Data Visualisation. It brings a real TV registration
-          snapshot into a clear, interactive website while we develop a broader question about Australian energy use.
+        <p>Still On is a COS30045 Data Visualisation project built around an Australian TV register snapshot. It asks
+          how daily viewing hours, standby modes, and screen size change projected yearly electricity use.
         </p>
       </div>
       <div class="about-mark" aria-hidden="true"><span>W<span>⚡</span></span></div>
@@ -38,11 +38,10 @@
           <h2>Built to ask better questions.</h2>
         </div>
         <div class="about-prose">
-          <p>This first version lets visitors ask whether TV screen size is related to labelled annual energy
-            consumption, and how the picture changes by technology or brand. It is an exploratory tool, not a
-            recommendation engine.</p>
-          <p>When a stronger Assignment 1 dataset and angle are selected, the data and story can be updated without
-            rebuilding the basic site structure.</p>
+          <p>Choose up to four real model rows to compare viewing-hour scenarios. Then inspect how viewing and standby
+            power contribute to the total, and how a two-hour reduction varies across screen-size groups.</p>
+          <p>The older register scatterplot remains below the new story. It shows the source's labelled annual kWh,
+            which is a different measure from our viewing-hour projections.</p>
         </div>
       </div>
     </section>
@@ -53,23 +52,25 @@
         <div class="method-grid">
           <article><span>01</span>
             <h3>Source</h3>
-            <p>A temporary television registration CSV named <code>tv_2026_02_15.csv</code>, captured on 15 February
-              2026.</p>
+            <p><code>tv_2026_10_03.csv</code>, a television registration snapshot dated 3 October 2026.
+              Its rows describe registered models, not purchases or households.</p>
           </article>
           <article><span>02</span>
             <h3>Selection</h3>
-            <p>The chart uses records marked “Available,” sold in Australia, with plausible numeric screen size and
-              annual kWh values. Screen size is converted from centimetres to inches.</p>
+            <p>We keep approved models marked “Available” and sold in Australia. Of 5,340 source rows, 4,844 meet
+              those conditions and 3,990 have complete numeric viewing and standby power fields. Screen size is
+              converted from centimetres to inches.</p>
           </article>
           <article><span>03</span>
-            <h3>Encoding</h3>
-            <p>Position on a shared scale shows screen size and annual kWh. Filters support comparisons without
-              distorting the axes.</p>
+            <h3>Projection</h3>
+            <p>For h viewing hours per day: yearly kWh = 0.365 × [h × viewing W + active-standby hours × active W
+              + (24 − h − active-standby hours) × passive W]. We evaluate h = 2, 4, 6, 8, and 10.</p>
           </article>
           <article><span>04</span>
             <h3>Limits</h3>
-            <p>Registration status is not live store availability. Labelled yearly energy is a standardised value;
-              actual household use and electricity cost vary.</p>
+            <p>These scenarios hold active-standby hours fixed and assume the same pattern every day. They are
+              simulations from model specifications, not measurements of households or bill forecasts. “Available”
+              is not a live stock check.</p>
           </article>
         </div>
       </div>
@@ -81,10 +82,13 @@
           <h2>Make the workings visible.</h2>
         </div>
         <div class="about-prose">
-          <p>For the class exercise, this website uses three HTML pages, one shared CSS file, and vanilla JavaScript for
-            the FAQ, calculator, and data view. No external JavaScript library is required.</p>
-          <p>OpenAI Codex assisted with planning, visual design, implementation, and debugging. The README documents
-            that assistance so the work can be reviewed and explained during the exercise demonstration.</p><a
+          <p>The KNIME workflow prepares and visualises the three angles. The website uses the same selection and
+            projection rules to make the model and cohort filters respond immediately in the browser. A registration
+            number may cover several model rows, so each chart count refers to model rows. The standby bars are means
+            of different sets of models; differences between those groups cannot be attributed to standby alone.</p>
+          <p>The website uses three HTML pages, one shared CSS file, and vanilla JavaScript. OpenAI Codex assisted
+            with planning, visual design, implementation, and debugging. The README records the calculations and
+            limitations for review.</p><a
             class="text-link" href="televisions.html">Explore the data <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -92,7 +96,7 @@
   </main>
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div><strong>Wattwise</strong>
+      <div><strong>Still On</strong>
         <p>A COS30045 learning prototype by Chanh Nghi.</p>
       </div>
       <div><span>© 2026 Chanh Nghi</span><span>GenAI assistance: OpenAI Codex for design and code.</span></div>

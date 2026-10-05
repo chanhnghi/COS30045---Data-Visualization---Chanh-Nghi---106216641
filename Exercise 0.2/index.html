@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
     content="Explore appliance energy use in Australia through an interactive television data snapshot.">
-  <title>Home | Appliance Energy Consumption Website</title>
+  <title>Home | Still On</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/site.js" defer></script>
 </head>
@@ -15,9 +15,9 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html" aria-label="Wattwise, Home">
+      <a class="brand" href="index.html" aria-label="Still On, Home">
         <img src="assets/img/power-icon.png" alt="" width="45" height="45">
-        <span><strong>Wattwise</strong><small>Appliance energy atlas</small></span>
+        <span><strong>Still On</strong><small>Appliance energy atlas</small></span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html" aria-current="page">Home</a>
@@ -32,26 +32,26 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-dot"></span> COS30045 / DATA VISUALISATION</div>
         <h1>See the energy <em>behind</em> the screen.</h1>
-        <p class="hero-lead">An interactive starting point for understanding how televisions use electricity in
-          Australia. Explore a real TV register snapshot, compare models, and estimate the cost of daily use.</p>
+        <p class="hero-lead">How much does daily viewing change a TV's yearly electricity use? Explore registered
+          Australian models, compare standby modes, and estimate the energy saved by watching less.</p>
         <div class="button-row">
-          <a class="button button-primary" href="televisions.html">Explore TV data <span aria-hidden="true">↗</span></a>
+          <a class="button button-primary" href="televisions.html#viewing">Explore the story <span aria-hidden="true">↗</span></a>
           <a class="button button-quiet" href="#calculator">Try the calculator <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="hero-footnote">Prototype dataset: TV registrations captured 15 February 2026. A broader Australian
-          energy dataset will replace this later.</p>
+        <p class="hero-footnote">October 2026 TV register snapshot. Viewing-hour charts are model-based projections,
+          not measured household electricity use.</p>
       </div>
       <div class="hero-visual"
-        aria-label="Snapshot facts: 4,508 TV registration records and median labelled consumption of 397 kilowatt-hours per year">
+        aria-label="Snapshot facts: 3,990 TV model rows with complete power fields and median labelled consumption of 410 kilowatt-hours per year">
         <div class="hero-visual-top"><span>FIELD NOTE / 001</span><span>AUSTRALIA ↗</span></div>
         <div class="energy-orbit" aria-hidden="true">
           <div class="orbit-core"><span>⚡</span></div>
         </div>
         <div class="hero-stats">
-          <div><strong>4,508</strong><span>TV registration records</span></div>
-          <div><strong>397</strong><span>median labelled kWh / year</span></div>
+          <div><strong>3,990</strong><span>TV model rows analysed</span></div>
+          <div><strong>410</strong><span>median labelled kWh / year</span></div>
         </div>
-        <div class="hero-visual-bottom"><span>DATA SNAPSHOT</span><span>15 / 02 / 2026</span></div>
+        <div class="hero-visual-bottom"><span>DATA SNAPSHOT</span><span>03 / 10 / 2026</span></div>
       </div>
     </section>
 
@@ -62,27 +62,27 @@
             <p class="kicker">01 / THE QUESTION</p>
             <h2>Power use is more than a single number.</h2>
           </div>
-          <p>Screen size, display technology, and how long a device runs can all change the electricity it uses. This
-            prototype makes those variables easier to inspect.</p>
+          <p>Daily viewing, standby mode, and screen size each tell part of the energy story. Three linked views show
+            what the register's power figures imply under clear, repeatable assumptions.</p>
         </div>
         <div class="feature-grid">
           <article class="feature-card"><span class="feature-number">01</span>
             <div class="feature-icon" aria-hidden="true">▦</div>
-            <h3>Explore the register</h3>
-            <p>Filter thousands of TV registrations and compare screen size with labelled annual energy use.</p><a
-              href="televisions.html">Open the data <span aria-hidden="true">↗</span></a>
+            <h3>Follow the viewing hours</h3>
+            <p>Select up to four TV models and see their projected kWh at 2, 4, 6, 8, and 10 hours per day.</p><a
+              href="televisions.html#viewing">Compare models <span aria-hidden="true">↗</span></a>
           </article>
           <article class="feature-card"><span class="feature-number">02</span>
             <div class="feature-icon" aria-hidden="true">∑</div>
-            <h3>Estimate your use</h3>
-            <p>Enter watts, daily viewing hours, and an electricity price to see an illustrative cost estimate.</p><a
-              href="#calculator">Open calculator <span aria-hidden="true">↗</span></a>
+            <h3>Look at standby</h3>
+            <p>Compare where viewing and standby energy go, with a closer view of the smaller standby portion.</p><a
+              href="televisions.html#standby">See the breakdown <span aria-hidden="true">↗</span></a>
           </article>
           <article class="feature-card"><span class="feature-number">03</span>
             <div class="feature-icon" aria-hidden="true">◎</div>
-            <h3>Read with context</h3>
-            <p>See where this snapshot came from, what we filtered, and what these values cannot tell us.</p><a
-              href="about.html">Read the method <span aria-hidden="true">↗</span></a>
+            <h3>Count a two-hour shift</h3>
+            <p>Compare median projected yearly savings across three screen-size groups.</p><a
+              href="televisions.html#savings">See the saving <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -125,8 +125,7 @@
         <div>
           <p class="kicker">03 / GOOD TO KNOW</p>
           <h2>Questions worth asking.</h2>
-          <p>These answers introduce the ideas behind this prototype. We will expand them when the final dataset and
-            project angle are chosen.</p>
+          <p>Read the charts as projections from model specifications. These answers explain their scope.</p>
         </div>
         <div class="faq-list">
           <div class="faq-item">
@@ -149,7 +148,7 @@
             <h3><button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-a3">Is this a live
                 list of TVs sold today?<span aria-hidden="true">+</span></button></h3>
             <div class="faq-answer" id="faq-a3" hidden>
-              <p>No. This site uses a temporary snapshot dated 15 February 2026. “Available” reflects the status
+              <p>No. This site uses a snapshot dated 3 October 2026. “Available” reflects the status
                 recorded in that file, not a live stock check.</p>
             </div>
           </div>
@@ -159,7 +158,7 @@
   </main>
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div><strong>Wattwise</strong>
+      <div><strong>Still On</strong>
         <p>A COS30045 learning prototype by Chanh Nghi.</p>
       </div>
       <div><span>© 2026 Chanh Nghi</span><span>GenAI assistance: OpenAI Codex for design and code.</span></div>

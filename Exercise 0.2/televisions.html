@@ -5,19 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Explore an Australian television energy rating snapshot by size, technology, and brand.">
-  <title>Televisions | Appliance Energy Consumption Website</title>
+    content="Explore how viewing hours, standby modes, and screen size shape projected TV energy use in Australia.">
+  <title>Televisions | Still On</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/site.js" defer></script>
   <script src="assets/data/tv-snapshot.js" defer></script>
+  <script src="assets/js/story.js" defer></script>
   <script src="assets/js/televisions.js" defer></script>
 </head>
 
 <body data-page="televisions">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Wattwise, Home"><img
-          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Wattwise</strong><small>Appliance
+    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Still On, Home"><img
+          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Still On</strong><small>Appliance
             energy atlas</small></span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="televisions.html"
           aria-current="page">Televisions</a><a href="about.html">About us</a></nav>
@@ -26,19 +27,122 @@
   <main id="main">
     <section class="page-hero shell">
       <div>
-        <p class="kicker">THE DATA / 01</p>
-        <h1>Explore the <em>TV snapshot.</em></h1>
-        <p>See how labelled annual energy use varies with screen size. Change the filters to focus on a display
-          technology, brand, or size range.</p>
+        <p class="kicker">AUSTRALIAN TV ENERGY / OCTOBER 2026</p>
+        <h1>What changes when the <em>screen stays on?</em></h1>
+        <p>Choose real registered models, change daily viewing time, and see where the projected electricity goes.
+          Then explore the underlying TV register yourself.</p>
+        <div class="story-jump-links" aria-label="On this page">
+          <a href="#viewing">01 Viewing hours ↓</a><a href="#standby">02 Standby ↓</a>
+          <a href="#savings">03 Two-hour saving ↓</a><a href="#register">Explore the register ↓</a>
+        </div>
       </div>
-      <div class="page-hero-stamp"><span>4,508</span><small>eligible TV records<br>in the February 2026 file</small>
+      <div class="page-hero-stamp"><span>3,990</span><small>model rows with<br>complete power data</small>
       </div>
     </section>
-    <section class="data-section section-light">
+    <section class="story-section story-section-dark" id="viewing" aria-labelledby="viewing-title">
+      <div class="shell">
+        <div class="story-heading">
+          <div><p class="kicker">01 / THE HOURS ON</p><h2 id="viewing-title">The same TV.<br><em>A different year.</em></h2></div>
+          <p>Pick up to four registered models. Each line projects annual electricity use if that TV is watched
+            for 2, 4, 6, 8, or 10 hours every day. The faint lines show up to 300 other model rows for context.</p>
+        </div>
+        <div class="story-panel line-panel">
+          <div class="story-panel-head">
+            <div><span class="mini-kicker">MAKE THE COMPARISON YOURS</span><h3>Which screens would you compare?</h3></div>
+            <p>Power values come from the October register snapshot; the yearly totals are simulated.</p>
+          </div>
+          <div class="story-filter-grid">
+            <label>Display technology<select id="line-tech"><option value="all">All technologies</option></select></label>
+            <label>Screen size<select id="line-size">
+              <option value="all">All sizes</option><option value="Small">Small · ≤43 in</option>
+              <option value="Medium">Medium · >43–66 in</option><option value="Large">Large · >66 in</option>
+            </select></label>
+            <div class="model-picker">
+              <label for="model-search">Find a TV by brand or model</label>
+              <input id="model-search" type="search" placeholder="Try LG, Samsung, OLED…" autocomplete="off">
+              <div class="model-results" id="model-results" hidden></div>
+            </div>
+          </div>
+          <div class="selection-row"><span class="mini-kicker">SELECTED MODELS <span id="selection-count">0/4</span></span>
+            <div class="selected-models" id="selected-models"></div></div>
+          <div class="story-chart-scroll"><svg id="viewing-chart" viewBox="0 0 1000 490" role="img"
+              aria-labelledby="viewing-chart-title viewing-chart-desc">
+              <title id="viewing-chart-title">Projected annual energy by daily viewing hours for selected televisions</title>
+              <desc id="viewing-chart-desc">Up to 300 faint lines provide context. Selected models appear in distinct colours and their values are listed below.</desc>
+            </svg></div>
+          <div class="line-legend" id="line-legend"></div>
+          <p class="story-chart-note" id="line-note" role="status"></p>
+        </div>
+        <div class="story-takeaway"><span>THE READING</span><p>Each line belongs to one model row. More viewing time
+          raises its projected annual kWh; the slope depends on the difference between viewing and passive standby power.</p></div>
+      </div>
+    </section>
+
+    <section class="story-section story-section-cream" id="standby" aria-labelledby="standby-title">
+      <div class="shell">
+        <div class="story-heading">
+          <div><p class="kicker">02 / THE HOURS OFF</p><h2 id="standby-title">Where does the<br><em>energy go?</em></h2></div>
+          <p>Viewing dominates the total, so the standby slices look tiny at the true scale. The second chart
+            gives standby its own zero-based axis. Compare composition within a size and technology cohort.</p>
+        </div>
+        <div class="standby-controls">
+          <label>Screen size<select id="standby-size">
+            <option value="55to65">55–65 in · KNIME example</option><option value="all">All sizes</option>
+            <option value="under55">Under 55 in</option><option value="over65">Over 65 in</option>
+          </select></label>
+          <label>Display technology<select id="standby-tech"><option value="all">All technologies</option></select></label>
+          <p id="standby-counts" role="status"></p>
+        </div>
+        <div class="energy-legend" aria-label="Chart colours"><span><i class="legend-viewing"></i> Viewing</span>
+          <span><i class="legend-passive"></i> Passive standby</span>
+          <span><i class="legend-active"></i> Active standby</span></div>
+        <div class="story-panel energy-chart-panel">
+          <div class="story-panel-head"><div><span class="mini-kicker">THE TRUE PROPORTIONS</span>
+            <h3>Projected annual energy by mode</h3></div><p>Mean kWh/year per model row. Two bars at each hour: no active standby, then active standby.</p></div>
+          <div class="story-chart-scroll"><svg id="total-energy-chart" viewBox="0 0 1000 430" role="img"
+            aria-labelledby="total-title total-desc"><title id="total-title">Mean annual energy split between viewing and standby</title>
+            <desc id="total-desc">Pairs of stacked bars compare two groups of TV model rows at each daily viewing duration.</desc></svg></div>
+          <p class="story-chart-note" id="total-note"></p>
+        </div>
+        <div class="story-panel energy-chart-panel standby-zoom-panel">
+          <div class="story-panel-head"><div><span class="mini-kicker">A CLOSER LOOK</span>
+            <h3>Only the standby part</h3></div><p>This chart has a different vertical scale from the total-energy chart above.</p></div>
+          <div class="story-chart-scroll"><svg id="standby-energy-chart" viewBox="0 0 1000 390" role="img"
+            aria-labelledby="standby-chart-title standby-chart-desc"><title id="standby-chart-title">Passive and active standby energy at a magnified scale</title>
+            <desc id="standby-chart-desc">Two bars at each duration show the contribution of passive and active standby in kWh per year.</desc></svg></div>
+          <p class="story-chart-note">Both axes begin at zero. Compare values, rather than bar heights, across the two charts.</p>
+        </div>
+        <div class="story-takeaway"><span>THE READING</span><p>The bars compare different sets of models.
+          Their total-energy gap may also reflect different viewing power; it does not isolate the effect of active standby.</p></div>
+      </div>
+    </section>
+
+    <section class="story-section story-section-savings" id="savings" aria-labelledby="savings-title">
+      <div class="shell">
+        <div class="story-heading">
+          <div><p class="kicker">03 / THE TWO-HOUR SHIFT</p><h2 id="savings-title">A shorter session.<br><em>A different payoff.</em></h2></div>
+          <p>For each model, compare any two scenarios two hours apart. The chart shows the median projected
+            yearly saving across small, medium, and large screens.</p>
+        </div>
+        <div class="story-panel saving-panel">
+          <div class="story-panel-head"><div><span class="mini-kicker">THE SIZE EFFECT</span>
+            <h3>Two fewer viewing hours each day</h3></div><p>Median projected saving across all 3,990 complete model rows.</p></div>
+          <div class="story-chart-scroll"><svg id="savings-chart" viewBox="0 0 1000 490" role="img"
+            aria-labelledby="savings-chart-title savings-chart-desc"><title id="savings-chart-title">Median annual kWh saved for a two-hour daily viewing reduction</title>
+            <desc id="savings-chart-desc">Three bars compare model rows in small, medium, and large screen-size groups.</desc></svg></div>
+          <p class="story-chart-note" id="savings-note"></p>
+        </div>
+        <div class="story-takeaway"><span>WHY ANY TWO HOURS?</span><p>In this model, every two-hour reduction
+          between 2 and 10 hours gives the same saving for the same TV. The formula holds active standby time fixed
+          and replaces viewing time with passive standby time.</p></div>
+      </div>
+    </section>
+
+    <section class="data-section section-light" id="register">
       <div class="shell">
         <div class="data-toolbar">
           <div>
-            <p class="kicker">FILTER THE REGISTER</p>
+            <p class="kicker">04 / EXPLORE THE REGISTER</p>
             <h2>Find a clearer comparison.</h2>
           </div>
           <div class="filter-grid"><label>Display technology<select id="technology-filter">
@@ -58,7 +162,7 @@
         <p class="load-message" id="load-message" role="status">Loading television snapshot…</p>
         <div class="data-content" id="data-content" hidden>
           <div class="stat-grid">
-            <div class="stat-card"><span>RECORDS SHOWN</span><strong id="model-count">—</strong><small>matching current
+            <div class="stat-card"><span>MODEL ROWS SHOWN</span><strong id="model-count">—</strong><small>matching current
                 filters</small></div>
             <div class="stat-card"><span>MEDIAN ANNUAL ENERGY</span><strong id="median-energy">—</strong><small>labelled
                 kWh / year</small></div>
@@ -70,11 +174,11 @@
           <div class="chart-card">
             <div class="chart-header">
               <div>
-                <p class="kicker">CHART 01 / RELATIONSHIP</p>
+                <p class="kicker">REGISTER / RELATIONSHIP</p>
                 <h3>Screen size vs annual energy</h3>
-                <p>Each dot is one TV registration record. Hover a dot for its details.</p>
+                <p>Each dot is one model row. Hover a dot for its details.</p>
               </div>
-              <div class="chart-legend"><i></i> Registration record</div>
+              <div class="chart-legend"><i></i> Model row</div>
             </div>
             <div class="chart-scroll"><svg id="tv-chart" viewBox="0 0 900 450" role="img"
                 aria-labelledby="chart-title chart-desc">
@@ -110,16 +214,16 @@
           </div>
         </div>
         <div class="source-strip"><span>DATA NOTE</span>
-          <p>Temporary source: <code>tv_2026_02_15.csv</code>. Includes rows marked “Available” and sold in Australia,
-            with usable screen size and annual kWh. These labels reflect the file at capture time; they do not confirm
-            current retail stock.</p><a href="about.html">Method & limitations ↗</a>
+          <p>Source snapshot: <code>tv_2026_10_03.csv</code>. Includes approved rows marked “Available” and sold in
+            Australia, with complete power fields. A registration can list several models; these are model rows,
+            not sales counts. Status reflects the snapshot, not live stock.</p><a href="about.html">Method & limitations ↗</a>
         </div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <div><strong>Wattwise</strong>
+      <div><strong>Still On</strong>
         <p>A COS30045 learning prototype by Chanh Nghi.</p>
       </div>
       <div><span>© 2026 Chanh Nghi</span><span>GenAI assistance: OpenAI Codex for design and code.</span></div>
