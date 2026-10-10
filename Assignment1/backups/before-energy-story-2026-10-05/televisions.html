@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Explore an Australian television energy rating snapshot by size, technology, and brand.">
+  <title>Televisions | Appliance Energy Consumption Website</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/data/tv-snapshot.js" defer></script>
+  <script src="assets/js/televisions.js" defer></script>
+</head>
+
+<body data-page="televisions">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav-shell"><a class="brand" href="index.html" aria-label="Wattwise, Home"><img
+          src="assets/img/power-icon.png" alt="" width="45" height="45"><span><strong>Wattwise</strong><small>Appliance
+            energy atlas</small></span></a>
+      <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="televisions.html"
+          aria-current="page">Televisions</a><a href="about.html">About us</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-hero shell">
+      <div>
+        <p class="kicker">THE DATA / 01</p>
+        <h1>Explore the <em>TV snapshot.</em></h1>
+        <p>See how labelled annual energy use varies with screen size. Change the filters to focus on a display
+          technology, brand, or size range.</p>
+      </div>
+      <div class="page-hero-stamp"><span>4,508</span><small>eligible TV records<br>in the February 2026 file</small>
+      </div>
+    </section>
+    <section class="data-section section-light">
+      <div class="shell">
+        <div class="data-toolbar">
+          <div>
+            <p class="kicker">FILTER THE REGISTER</p>
+            <h2>Find a clearer comparison.</h2>
+          </div>
+          <div class="filter-grid"><label>Display technology<select id="technology-filter">
+                <option value="all">All technologies</option>
+                <option value="LCD (LED)">LCD (LED)</option>
+                <option value="LCD">LCD</option>
+                <option value="OLED">OLED</option>
+              </select></label><label>Brand<select id="brand-filter">
+                <option value="all">All brands</option>
+              </select></label><label>Screen size<select id="size-filter">
+                <option value="all">All screen sizes</option>
+                <option value="under50">Under 50 in</option>
+                <option value="50to69">50–69 in</option>
+                <option value="70plus">70 in or larger</option>
+              </select></label></div>
+        </div>
+        <p class="load-message" id="load-message" role="status">Loading television snapshot…</p>
+        <div class="data-content" id="data-content" hidden>
+          <div class="stat-grid">
+            <div class="stat-card"><span>RECORDS SHOWN</span><strong id="model-count">—</strong><small>matching current
+                filters</small></div>
+            <div class="stat-card"><span>MEDIAN ANNUAL ENERGY</span><strong id="median-energy">—</strong><small>labelled
+                kWh / year</small></div>
+            <div class="stat-card"><span>MEDIAN SCREEN SIZE</span><strong id="median-size">—</strong><small>inches,
+                diagonal</small></div>
+            <div class="stat-card"><span>MEDIAN STAR RATING</span><strong id="median-stars">—</strong><small>where
+                rating is supplied</small></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <p class="kicker">CHART 01 / RELATIONSHIP</p>
+                <h3>Screen size vs annual energy</h3>
+                <p>Each dot is one TV registration record. Hover a dot for its details.</p>
+              </div>
+              <div class="chart-legend"><i></i> Registration record</div>
+            </div>
+            <div class="chart-scroll"><svg id="tv-chart" viewBox="0 0 900 450" role="img"
+                aria-labelledby="chart-title chart-desc">
+                <title id="chart-title">Scatterplot of TV screen size and labelled annual energy use</title>
+                <desc id="chart-desc">The plotted points update when filters change. A table below provides model
+                  details.</desc>
+              </svg></div>
+            <div class="chart-axis-label">SCREEN SIZE / INCHES →</div>
+            <p class="chart-note" id="chart-note"></p>
+          </div>
+          <div class="table-card">
+            <div class="table-heading">
+              <div>
+                <p class="kicker">DETAILS / A CLOSER LOOK</p>
+                <h3>Ten lowest annual kWh values in this view</h3>
+              </div>
+              <p>Small screens often use less total energy. This list is not an efficiency ranking.</p>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Brand / model</th>
+                    <th scope="col">Screen</th>
+                    <th scope="col">Technology</th>
+                    <th scope="col">Annual energy</th>
+                    <th scope="col">Stars</th>
+                  </tr>
+                </thead>
+                <tbody id="model-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="source-strip"><span>DATA NOTE</span>
+          <p>Temporary source: <code>tv_2026_02_15.csv</code>. Includes rows marked “Available” and sold in Australia,
+            with usable screen size and annual kWh. These labels reflect the file at capture time; they do not confirm
+            current retail stock.</p><a href="about.html">Method & limitations ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><strong>Wattwise</strong>
+        <p>A COS30045 learning prototype by Chanh Nghi.</p>
+      </div>
+      <div><span>© 2026 Chanh Nghi</span><span>GenAI assistance: OpenAI Codex for design and code.</span></div>
+    </div>
+  </footer>
+</body>
+
+</html>
