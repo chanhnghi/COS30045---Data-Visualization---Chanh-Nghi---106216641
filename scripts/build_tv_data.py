@@ -1,4 +1,4 @@
-"""Build the small, browser-friendly TV snapshot used by Exercise 0.2.
+"""Build the small, browser-friendly TV snapshot used by Assignment1.
 
 Usage: python scripts/build_tv_data.py path/to/tv_2026_02_15.csv
 """
@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "Exercise 0.2" / "assets" / "data" / "tv-snapshot.js"
+OUTPUT = ROOT / "Assignment1" / "assets" / "data" / "tv-snapshot.js"
 
 
 def number(value):
